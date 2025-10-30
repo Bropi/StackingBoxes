@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneSwitcher="*res://src/autoloads/scene_switcher.gd"
 GameData="*res://src/autoloads/game_data.gd"
+MainV2="*res://src/main/mainV2.gd"
 
 [file_customization]
 
@@ -27,6 +28,7 @@ folder_colors={
 "res://assets/Environment/": "teal",
 "res://assets/audio/": "blue",
 "res://assets/characters/": "yellow",
+"res://resources/": "teal",
 "res://src/": "orange",
 "res://src/autoloads/": "pink",
 "res://src/characters/": "yellow",

@@ -9,6 +9,11 @@ signal reload_scene
 var scene_reloading: bool = false
 
 func _ready() -> void:
+	#load saved high score
+	if FileAccess.file_exists("user://save_data.tres"):
+		var save = ResourceLoader.load("user://save_data.tres")
+		GameData.high_score = save.high_score
+	
 	score_label.text = "Score: %d\nHigh Score: %d" % [GameData.score, GameData.high_score]
 
 # reload the scene after a box has been dropped on the ground
@@ -25,13 +30,15 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 		restart_scene()
 
 func restart_scene() -> void:
-	# Voorkom dubbele aanroepen tijdens de herlaadprocedure
 	scene_reloading = true
-	
+	print("scene restart (level.gd)")
 	#wait 2 seconds and emit a signal to main and children that they need to be reset
+	
 	emit_signal("reload_scene")
+	MainV2._on_level_reload_scene()
 	scene_reloading = false
-
+	GameData.score = 0
+	GameData.save()
 
 func _on_camera_2d_camera_limit() -> void:
 	score_label.text = "Score: %d\nHigh Score: %d" % [GameData.score, GameData.high_score]
