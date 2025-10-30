@@ -11,11 +11,11 @@ func update_score():
 
 
 func save():
-	var save = PlayerScore.new()
-	save.high_score = high_score
-	ResourceSaver.save(save, "user://save_data.tres")
+	var save_new = PlayerScore.new()
+	save_new.high_score = high_score
+	ResourceSaver.save(save_new, "user://save_data.tres")
 
 func load():
 	if FileAccess.file_exists("user://save_data.tres"):
-		var save = ResourceLoader.load("user://save_data.tres")
-		high_score = save.high_score
+		var save_new = ResourceLoader.load("user://save_data.tres")
+		high_score = save_new.high_score

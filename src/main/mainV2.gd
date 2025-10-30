@@ -7,8 +7,8 @@ func _ready() -> void:
 func _on_level_reload_scene() -> void:
 	#get_tree().reload_current_scene()
 	print("main.gd: level reloading")
-	SceneSwitcher.switch_to_scene("res://src/levels/level.tscn")
+	SceneSwitcher.switch_to_scene("res://src/ui/start_game_menu.tscn")
 
 func start_game():
 	#switches to level scene
-	SceneSwitcher.switch_to_scene("res://src/levels/level.tscn")
+	SceneSwitcher.switch_to_scene("res://src/ui/start_game_menu.tscn")

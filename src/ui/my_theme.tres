@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cyxxc324mb2a8"]
+
+[ext_resource type="StyleBox" uid="uid://2yt6mpf7swyw" path="res://src/ui/Button.tres" id="1_0ot8m"]
+[ext_resource type="StyleBox" uid="uid://eh5kkekwcmw0" path="res://src/ui/Button2.tres" id="2_idkql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sy5hb"]
+content_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jykg"]
+content_margin_left = 50.0
+content_margin_top = 50.0
+content_margin_right = 50.0
+content_margin_bottom = 50.0
+bg_color = Color(0.09411765, 0.09411765, 0.09411765, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.25490198)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ot8m"]
+bg_color = Color(0.34117648, 0.34117648, 0.34117648, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[resource]
+Button/styles/hover = ExtResource("1_0ot8m")
+Button/styles/normal = ExtResource("1_0ot8m")
+Label/font_sizes/font_size = 30
+Label/styles/normal = SubResource("StyleBoxEmpty_sy5hb")
+NewGameButton/base_type = &"Button"
+NewGameButton/styles/hover = ExtResource("2_idkql")
+NewGameButton/styles/normal = ExtResource("2_idkql")
+PanelContainer/styles/normal = null
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_4jykg")
+VBoxContainer/constants/separation = 35
+VBoxContainer/styles/normal = SubResource("StyleBoxFlat_0ot8m")

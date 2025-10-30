@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3 uid="uid://mr7wilv8kktq"]
+
+[ext_resource type="Theme" uid="uid://cyxxc324mb2a8" path="res://src/ui/my_theme.tres" id="1_fbf3f"]
+[ext_resource type="Script" uid="uid://bv2816d1scxj3" path="res://src/ui/start_game_menu.gd" id="1_mbvm6"]
+[ext_resource type="Script" uid="uid://ikwn3mhw0jte" path="res://src/ui/animation_component.gd" id="2_lv8ek"]
+
+[node name="StartGameMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mbvm6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ColorRect"]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = ExtResource("1_fbf3f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fbf3f")
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="StartGameButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fbf3f")
+theme_type_variation = &"NewGameButton"
+text = "Start Game"
+
+[node name="AnimationComponent" type="Node" parent="CenterContainer/PanelContainer/VBoxContainer/StartGameButton"]
+script = ExtResource("2_lv8ek")
+hover_scale = Vector2(1.2, 1.2)
+time = 0.2
+transition_type = 10
+metadata/_custom_type_script = "uid://ikwn3mhw0jte"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fbf3f")
+theme_type_variation = &"FlatButton"
+text = "Settings
+"
+
+[node name="AnimationComponent2" type="Node" parent="CenterContainer/PanelContainer/VBoxContainer/SettingsButton"]
+script = ExtResource("2_lv8ek")
+hover_scale = Vector2(1.2, 1.2)
+time = 0.2
+transition_type = 10
+metadata/_custom_type_script = "uid://ikwn3mhw0jte"
+
+[node name="QuitGameButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fbf3f")
+theme_type_variation = &"FlatButton"
+text = "Quit Game"
+
+[node name="AnimationComponent3" type="Node" parent="CenterContainer/PanelContainer/VBoxContainer/QuitGameButton"]
+script = ExtResource("2_lv8ek")
+hover_scale = Vector2(1.2, 1.2)
+time = 0.2
+transition_type = 10
+metadata/_custom_type_script = "uid://ikwn3mhw0jte"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
