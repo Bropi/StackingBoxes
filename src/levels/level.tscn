@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://ufp4l1t8n5cv"]
+
+[ext_resource type="Script" uid="uid://vav5fwxefp8d" path="res://src/levels/level.gd" id="1_aeuny"]
+[ext_resource type="PackedScene" uid="uid://dx03d1pbdsrvk" path="res://src/characters/player/player.tscn" id="1_g8rii"]
+[ext_resource type="PackedScene" uid="uid://bfssx2jgauwvm" path="res://src/levels/camera.tscn" id="2_ub47v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aeuny"]
+size = Vector2(1142, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7umm5"]
+size = Vector2(1136, 16)
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_aeuny")
+
+[node name="Surfaces" type="Node2D" parent="."]
+
+[node name="Table" type="StaticBody2D" parent="Surfaces"]
+position = Vector2(576, 512)
+scale = Vector2(1.6978406, 1.6978406)
+
+[node name="PolygonTable" type="Polygon2D" parent="Surfaces/Table"]
+position = Vector2(-576, -512)
+color = Color(0, 1, 0, 1)
+polygon = PackedVector2Array(416, 448, 448, 448, 448, 480, 480, 512, 672, 512, 704, 480, 704, 448, 736, 448, 736, 544, 736, 608, 704, 608, 704, 544, 448, 544, 448, 608, 416, 608)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/Table"]
+position = Vector2(-576, -512)
+polygon = PackedVector2Array(416, 448, 448, 448, 448, 480, 480, 512, 672, 512, 704, 480, 704, 448, 736, 448, 736, 608, 704, 608, 704, 544, 448, 544, 448, 608, 416, 608)
+
+[node name="Ground" type="StaticBody2D" parent="Surfaces"]
+position = Vector2(568, 608)
+
+[node name="PolygonGround" type="Polygon2D" parent="Surfaces/Ground"]
+position = Vector2(8, 0)
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-576, 0, 576, 0, 576, 80, -576, 80)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Surfaces/Ground"]
+position = Vector2(5, 3)
+shape = SubResource("RectangleShape2D_aeuny")
+debug_color = Color(4.813075e-07, 0.6235668, 0.5393091, 0.41960785)
+
+[node name="Area2D" type="Area2D" parent="Surfaces/Ground"]
+position = Vector2(0, -16)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2" type="CollisionShape2D" parent="Surfaces/Ground/Area2D"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_7umm5")
+
+[node name="Edges" type="Node2D" parent="Surfaces"]
+position = Vector2(576, 0)
+
+[node name="edges" type="StaticBody2D" parent="Surfaces/Edges"]
+position = Vector2(-592, 128)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/Edges/edges"]
+scale = Vector2(1.0055482, 1)
+polygon = PackedVector2Array(16, -128, 16, 568, 1168, 568, 1168, -128, 1168, -192, 1232, -192, 1232, 648, -48, 648, -48, -192, 16, -192)
+
+[node name="Player" parent="." instance=ExtResource("1_g8rii")]
+z_index = 10
+position = Vector2(576, 136)
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_ub47v")]
+position = Vector2(576, 320)
+position_smoothing_enabled = true
+target = NodePath("../Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 376.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 32
+text = "Move with arrow keys
+Drop box with space bar
+"
+
+[node name="Hitmarker" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[connection signal="reload_scene" from="." to="Player" method="_on_level_reload_scene"]
+[connection signal="body_entered" from="Surfaces/Ground/Area2D" to="." method="_on_area_2d_body_entered"]

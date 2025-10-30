@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyfpebeubuwm5"]
+
+[ext_resource type="Script" uid="uid://bgktb76wwmb7e" path="res://src/characters/player/weapons/box_v2/box_camera_timer.gd" id="1_dcllo"]
+
+[node name="CircleBox" type="RigidBody2D" groups=["Box Instances"]]
+script = ExtResource("1_dcllo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.82044226, 0.82044226)
+polygon = PackedVector2Array(0, -48, 24, -40, 40, -24, 48, 0, 40, 24, 24, 40, 0, 48, -24, 40, -40, 24, -48, 0, -40, -24, -24, -40)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(0.82044226, 0.82044226)
+color = Color(0.1882353, 0.13725491, 1, 1)
+polygon = PackedVector2Array(0, -48, 24, -40, 40, -24, 48, 0, 40, 24, 24, 40, 0, 48, -24, 40, -40, 24, -48, 0, -40, -24, -24, -40)

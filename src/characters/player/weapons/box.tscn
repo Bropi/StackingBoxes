@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://gmqxnac2i480"]
+
+[ext_resource type="Script" uid="uid://cl8ukvw3fkxfa" path="res://src/characters/player/weapons/box.gd" id="1_plopp"]
+[ext_resource type="Texture2D" uid="uid://cul45ig5i6df1" path="res://icon.svg" id="2_6c3kr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6c3kr"]
+
+[node name="Box" type="CharacterBody2D"]
+visible = false
+script = ExtResource("1_plopp")
+
+[node name="BaseCollisionShape" type="CollisionShape2D" parent="."]
+scale = Vector2(-4.539509, -4.539509)
+shape = SubResource("CircleShape2D_6c3kr")
+
+[node name="TestSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.8700888, 0.8700888)
+texture = ExtResource("2_6c3kr")
+
+[node name="SquareBox" type="CharacterBody2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="SquareBox"]
+scale = Vector2(0.8700888, 0.8700888)
+polygon = PackedVector2Array(-56, -56, 56, -56, 56, 56, -56, 56)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SquareBox"]
+scale = Vector2(0.8700888, 0.8700888)
+polygon = PackedVector2Array(-56, -56, 56, -56, 56, 56, -56, 56)
+
+[node name="CircleBox" type="CharacterBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CircleBox"]
+polygon = PackedVector2Array(0, -48, 24, -40, 40, -24, 48, 0, 40, 24, 24, 40, 0, 48, -24, 40, -40, 24, -48, 0, -40, -24, -24, -40)
+
+[node name="Polygon2D" type="Polygon2D" parent="CircleBox"]
+polygon = PackedVector2Array(0, -48, 24, -40, 40, -24, 48, 0, 40, 24, 24, 40, 0, 48, -24, 40, -40, 24, -48, 0, -40, -24, -24, -40)

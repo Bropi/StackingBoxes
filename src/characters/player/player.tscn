@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx03d1pbdsrvk"]
+
+[ext_resource type="Script" uid="uid://dpnne5ehrftnk" path="res://src/characters/player/player.gd" id="1_bxhu7"]
+[ext_resource type="Texture2D" uid="uid://cul45ig5i6df1" path="res://icon.svg" id="2_7nd6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nd6e"]
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_bxhu7")
+
+[node name="BoxDropRail" type="Polygon2D" parent="."]
+position = Vector2(-1679.9998, -136)
+scale = Vector2(2.974277, 0.97602504)
+color = Color(0, 0, 1, 1)
+polygon = PackedVector2Array(0, 128, 1152, 128, 1152, 152, 0, 152)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7nd6e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.350868, 6.350868)
+shape = SubResource("RectangleShape2D_7nd6e")
+
+[node name="BoxInstance" type="Node2D" parent="." groups=["Box Instances"]]

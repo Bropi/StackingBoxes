@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://it6ks817wr74"]
+
+[ext_resource type="Script" uid="uid://defbdyvaidwhw" path="res://src/characters/player/weapons/box_v2/box_v_2.gd" id="1_s16db"]
+
+[node name="BoxV2" type="Node2D" groups=["Box Instances"]]
+script = ExtResource("1_s16db")
+
+[node name="BoxInstance" type="Node2D" parent="."]

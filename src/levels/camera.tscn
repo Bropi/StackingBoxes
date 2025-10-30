@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfssx2jgauwvm"]
+
+[ext_resource type="Script" uid="uid://dpgljcuqjwnvd" path="res://src/levels/camera_2d.gd" id="1_1kcfv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kcfv"]
+size = Vector2(1144, 16)
+
+[node name="Camera2D" type="Camera2D"]
+script = ExtResource("1_1kcfv")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -64)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_1kcfv")
+debug_color = Color(0.9360637, 1.7327071e-05, 0.6358778, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk520dwhk8u7d"]
+
+[ext_resource type="Script" uid="uid://bgktb76wwmb7e" path="res://src/characters/player/weapons/box_v2/box_camera_timer.gd" id="1_hjjkk"]
+
+[node name="LongBoxHorizontal" type="RigidBody2D"]
+script = ExtResource("1_hjjkk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.5699066
+scale = Vector2(0.2735325, 0.7108614)
+polygon = PackedVector2Array(-56, -56, 56, -56, 56, 56, -56, 56)
+
+[node name="Polygon2D" type="Polygon2D" parent="." groups=["Box Instances"]]
+rotation = 1.5699066
+scale = Vector2(0.2735325, 0.7108614)
+color = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(-56, -56, 56, -56, 56, 56, -56, 56)

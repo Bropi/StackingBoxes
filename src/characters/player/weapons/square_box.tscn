@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cio7em7alqush"]
+
+[node name="SquareBox" type="CharacterBody2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-56, -56, 56, -56, 56, 56, -56, 56)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-56, -56, 56, -56, 56, 56, -56, 56)
