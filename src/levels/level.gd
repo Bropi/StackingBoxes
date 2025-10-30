@@ -4,8 +4,12 @@ signal reload_scene
 
 @onready var hitmarker: ColorRect = $CanvasLayer/Hitmarker
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var score_label: Label = $CanvasLayer/ScoreLabel
 
 var scene_reloading: bool = false
+
+func _ready() -> void:
+	score_label.text = "Score: %d\nHigh Score: %d" % [GameData.score, GameData.high_score]
 
 # reload the scene after a box has been dropped on the ground
 func _on_area_2d_body_entered(_body: Node2D) -> void:
@@ -27,3 +31,8 @@ func restart_scene() -> void:
 	#wait 2 seconds and emit a signal to main and children that they need to be reset
 	emit_signal("reload_scene")
 	scene_reloading = false
+
+
+func _on_camera_2d_camera_limit() -> void:
+	score_label.text = "Score: %d\nHigh Score: %d" % [GameData.score, GameData.high_score]
+	print("+10 score!")

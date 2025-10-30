@@ -4,6 +4,7 @@ extends Camera2D
 @export var max_offset: float = 10.0
 @export var shake_duration: float = 0.25 
 
+signal camera_limit
 
 var time_left: float = 0.0
 
@@ -20,8 +21,14 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
+	#add score and check if high score should be hightened
+	GameData.update_score()
+	emit_signal("camera_limit")
+	#move camera and player up when the limit has been reached
 	global_position.y -= 100
 	target.global_position.y -= 100
+	
+
 
 
 func shake(duration: float = -1.0) -> void:
