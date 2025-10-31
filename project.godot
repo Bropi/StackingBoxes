@@ -21,6 +21,12 @@ SceneSwitcher="*res://src/autoloads/scene_switcher.gd"
 GameData="*res://src/autoloads/game_data.gd"
 MainV2="*res://src/main/mainV2.gd"
 
+[display]
+
+window/size/viewport_width=1800
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
+
 [file_customization]
 
 folder_colors={

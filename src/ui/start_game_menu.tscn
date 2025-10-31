@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://mr7wilv8kktq"]
+[gd_scene load_steps=7 format=3 uid="uid://mr7wilv8kktq"]
 
 [ext_resource type="Theme" uid="uid://cyxxc324mb2a8" path="res://src/ui/my_theme.tres" id="1_fbf3f"]
 [ext_resource type="Script" uid="uid://bv2816d1scxj3" path="res://src/ui/start_game_menu.gd" id="1_mbvm6"]
 [ext_resource type="Script" uid="uid://ikwn3mhw0jte" path="res://src/ui/animation_component.gd" id="2_lv8ek"]
+
+[sub_resource type="Curve" id="Curve_mbvm6"]
+_data = [Vector2(0.034883723, 0.056179762), 0.0, 0.0, 0, 0, Vector2(0.1918605, 0.9662922), 0.0, 0.0, 0, 0, Vector2(0.37790704, 0.15730345), 0.0, 0.0, 0, 0, Vector2(0.5348838, 0.9662922), 0.0, 0.0, 0, 0, Vector2(0.72674423, 0.1685394), 0.0, 0.0, 0, 0, Vector2(0.94767445, 0.9887641), 2.244292, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Gradient" id="Gradient_cd8gu"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.11643836, 0.19863014, 0.33561644, 0.47260273, 0.6164383, 0.7123288, 0.79452056, 0.8630137, 1)
+colors = PackedColorArray(1, 1, 0.92941177, 1, 0.99607843, 0, 0, 1, 0.74509805, 0, 0.6901961, 1, 1, 0.48235294, 0, 1, 0, 0.9607843, 0, 1, 0, 0.5411765, 0.5137255, 1, 0.70547944, 0.70547944, 0.70547944, 1, 0.9237525, 0.8141474, 0, 1, 0.85975206, 0.85975206, 0.85975206, 1, 0, 0, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_uejg1"]
 
 [node name="StartGameMenu" type="Control"]
 layout_mode = 3
@@ -23,6 +35,32 @@ grow_vertical = 2
 color = Color(0.012617188, 0.012617188, 0.012617188, 1)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ColorRect"]
+position = Vector2(950, 0)
+amount = 150
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 100)
+initial_velocity_max = 1.0
+scale_amount_min = 0.0
+scale_amount_max = 31.93
+scale_amount_curve = SubResource("Curve_mbvm6")
+color_ramp = SubResource("Gradient_cd8gu")
+color_initial_ramp = SubResource("Gradient_uejg1")
+
+[node name="CPUParticlesMiddle" type="CPUParticles2D" parent="ColorRect"]
+position = Vector2(950, 1076)
+amount = 150
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(300, 1)
+gravity = Vector2(0, -100)
+initial_velocity_max = 1.0
+scale_amount_min = 0.0
+scale_amount_max = 31.93
+scale_amount_curve = SubResource("Curve_mbvm6")
+color_ramp = SubResource("Gradient_cd8gu")
+color_initial_ramp = SubResource("Gradient_uejg1")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(400, 100)
