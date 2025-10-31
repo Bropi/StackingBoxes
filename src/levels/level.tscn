@@ -92,6 +92,27 @@ position = Vector2(576, 320)
 position_smoothing_enabled = true
 target = NodePath("../Player")
 
+[node name="MarginContainer" type="MarginContainer" parent="Camera2D"]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = -376.0
+offset_right = 322.0
+offset_bottom = -226.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 75
+bbcode_enabled = true
+text = "[rainbow freq=1.0 sat=0.8 val=0.8pulse freq=1.5][shake rate=20.0 level=5 connected=1] STACKING BOXES"
+vertical_alignment = 3
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]

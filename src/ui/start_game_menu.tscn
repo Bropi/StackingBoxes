@@ -125,6 +125,28 @@ time = 0.2
 transition_type = 10
 metadata/_custom_type_script = "uid://ikwn3mhw0jte"
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -299.0
+offset_right = 326.0
+offset_bottom = -149.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 75
+bbcode_enabled = true
+text = "[rainbow freq=1.0 sat=0.8 val=0.8pulse freq=2.5][shake rate=20.0 level=5 connected=1] STACKING BOXES"
+vertical_alignment = 3
+
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
