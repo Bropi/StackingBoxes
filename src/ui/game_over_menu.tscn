@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://xndnd2rbvq5m"]
+[gd_scene load_steps=7 format=3 uid="uid://xndnd2rbvq5m"]
 
+[ext_resource type="Script" uid="uid://c1lgy37po0lhi" path="res://src/ui/game_over_menu.gd" id="1_06mt4"]
 [ext_resource type="Theme" uid="uid://cyxxc324mb2a8" path="res://src/ui/my_theme.tres" id="2_b3q3m"]
 [ext_resource type="Script" uid="uid://ikwn3mhw0jte" path="res://src/ui/animation_component.gd" id="3_h50pf"]
 
@@ -22,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_06mt4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -80,21 +82,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_b3q3m")
-text = "GAME PAUSED"
+text = "GAME OVER"
 horizontal_alignment = 1
-
-[node name="ResumeGameButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_b3q3m")
-theme_type_variation = &"NewGameButton"
-text = "Resume Game"
-
-[node name="AnimationComponent" type="Node" parent="CenterContainer/PanelContainer/VBoxContainer/ResumeGameButton"]
-script = ExtResource("3_h50pf")
-hover_scale = Vector2(1.2, 1.2)
-time = 0.2
-transition_type = 10
-metadata/_custom_type_script = "uid://ikwn3mhw0jte"
 
 [node name="MainMenuButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -104,20 +93,6 @@ text = "Main Menu
 "
 
 [node name="AnimationComponent2" type="Node" parent="CenterContainer/PanelContainer/VBoxContainer/MainMenuButton"]
-script = ExtResource("3_h50pf")
-hover_scale = Vector2(1.2, 1.2)
-time = 0.2
-transition_type = 10
-metadata/_custom_type_script = "uid://ikwn3mhw0jte"
-
-[node name="SettingsButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_b3q3m")
-theme_type_variation = &"FlatButton"
-text = "Settings
-"
-
-[node name="AnimationComponent2" type="Node" parent="CenterContainer/PanelContainer/VBoxContainer/SettingsButton"]
 script = ExtResource("3_h50pf")
 hover_scale = Vector2(1.2, 1.2)
 time = 0.2
@@ -158,3 +133,6 @@ theme_override_font_sizes/normal_font_size = 75
 bbcode_enabled = true
 text = "[rainbow freq=1.0 sat=0.8 val=0.8pulse freq=2.5][shake rate=20.0 level=5 connected=1] STACKING BOXES"
 vertical_alignment = 3
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ufp4l1t8n5cv"]
+[gd_scene load_steps=10 format=3 uid="uid://ufp4l1t8n5cv"]
 
 [ext_resource type="Script" uid="uid://vav5fwxefp8d" path="res://src/levels/level.gd" id="1_aeuny"]
 [ext_resource type="PackedScene" uid="uid://dx03d1pbdsrvk" path="res://src/characters/player/player.tscn" id="1_g8rii"]
 [ext_resource type="PackedScene" uid="uid://bfssx2jgauwvm" path="res://src/levels/camera.tscn" id="2_ub47v"]
 [ext_resource type="PackedScene" uid="uid://de8oc7teccqdt" path="res://src/ui/pause_game_menu.tscn" id="4_7umm5"]
-[ext_resource type="PackedScene" uid="uid://xndnd2rbvq5m" path="res://src/ui/game_over_menu.tscn" id="5_8tcek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aeuny"]
 size = Vector2(1142, 10)
@@ -164,9 +163,6 @@ grow_vertical = 2
 color = Color(1, 0, 0, 1)
 
 [node name="PauseGameMenu" parent="CanvasLayer" instance=ExtResource("4_7umm5")]
-visible = false
-
-[node name="GameOverMenu" parent="CanvasLayer" instance=ExtResource("5_8tcek")]
 visible = false
 
 [connection signal="reload_scene" from="." to="PausableNode/Player" method="_on_level_reload_scene"]

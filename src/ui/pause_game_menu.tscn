@@ -84,7 +84,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_6mohf")
-text = "PAUSE"
+text = "GAME PAUSED"
 horizontal_alignment = 1
 
 [node name="ResumeGameButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
