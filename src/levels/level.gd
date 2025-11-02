@@ -41,6 +41,7 @@ func restart_scene() -> void:
 	print("scene restart (level.gd)")
 	#wait 2 seconds and emit a signal to main and children that they need to be reset
 	
+	#old code lol the scene doesnt reload anymore but gives you a game over screen
 	emit_signal("reload_scene")
 	MainV2._on_level_reload_scene()
 	scene_reloading = false

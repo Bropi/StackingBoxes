@@ -11,10 +11,16 @@ var default_scale : Vector2
 
 func _ready() -> void:
 	target = get_parent()
-	
+	#ensure the tweens don't get offsetted by a change in de vbox
+	target.resized.connect(_on_target_resized)
+
 	#wait for every child node to be setup
 	call_deferred("setup")
 	call_deferred("connect_input")
+
+func _on_target_resized():
+	if from_center:
+		target.pivot_offset = target.size / 2
 
 
 #mandatory for detecting the target button control node and connect it to the on- & off_hover functions
@@ -26,8 +32,12 @@ func connect_input() -> void:
 
 func setup() -> void:
 	if from_center:
-		target.pivot_offset = target.size / 2 
+		call_deferred("_set_pivot_to_center")
+
+func _set_pivot_to_center():
+	target.pivot_offset = target.size / 2
 	default_scale = target.scale
+
 
 func on_hover() -> void:
 	add_tween("scale", hover_scale, time)
@@ -38,5 +48,7 @@ func off_hover() -> void:
 func add_tween(property: String, value, seconds: float) -> void:
 	if !is_inside_tree() or get_tree() == null:
 		return
-	var tween = get_tree().create_tween()
+	if target == null or !target.is_inside_tree():
+		return
+	var tween = target.create_tween()
 	tween.tween_property(target, property, value, seconds).set_trans(transition_type)
