@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ufp4l1t8n5cv"]
+[gd_scene load_steps=10 format=3 uid="uid://ufp4l1t8n5cv"]
 
 [ext_resource type="Script" uid="uid://vav5fwxefp8d" path="res://src/levels/level.gd" id="1_aeuny"]
 [ext_resource type="PackedScene" uid="uid://dx03d1pbdsrvk" path="res://src/characters/player/player.tscn" id="1_g8rii"]
 [ext_resource type="PackedScene" uid="uid://bfssx2jgauwvm" path="res://src/levels/camera.tscn" id="2_ub47v"]
+[ext_resource type="PackedScene" uid="uid://de8oc7teccqdt" path="res://src/ui/pause_game_menu.tscn" id="4_7umm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aeuny"]
 size = Vector2(1142, 10)
@@ -23,9 +24,13 @@ colors = PackedColorArray(1, 1, 0.92941177, 1, 0.99607843, 0, 0, 1, 0.74509805, 
 [sub_resource type="Gradient" id="Gradient_8tcek"]
 
 [node name="level" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_aeuny")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="PausableNode" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="PausableNode"]
 offset_left = -687.99994
 offset_top = -328.0
 offset_right = -647.99994
@@ -33,66 +38,66 @@ offset_bottom = -288.0
 scale = Vector2(63.192528, 31.197004)
 color = Color(0.15906177, 0.16371444, 0.16836713, 1)
 
-[node name="Surfaces" type="Node2D" parent="."]
+[node name="Surfaces" type="Node2D" parent="PausableNode"]
 
-[node name="Table" type="StaticBody2D" parent="Surfaces"]
+[node name="Table" type="StaticBody2D" parent="PausableNode/Surfaces"]
 position = Vector2(576, 512)
 scale = Vector2(1.6978406, 1.6978406)
 
-[node name="PolygonTable" type="Polygon2D" parent="Surfaces/Table"]
+[node name="PolygonTable" type="Polygon2D" parent="PausableNode/Surfaces/Table"]
 position = Vector2(-576, -512)
 color = Color(0, 0.5882353, 0, 1)
 polygon = PackedVector2Array(416, 448, 448, 448, 448, 480, 480, 512, 672, 512, 704, 480, 704, 448, 736, 448, 736, 544, 736, 608, 704, 608, 704, 544, 448, 544, 448, 608, 416, 608)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/Table"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PausableNode/Surfaces/Table"]
 position = Vector2(-576, -512)
 polygon = PackedVector2Array(416, 448, 448, 448, 448, 480, 480, 512, 672, 512, 704, 480, 704, 448, 736, 448, 736, 608, 704, 608, 704, 544, 448, 544, 448, 608, 416, 608)
 
-[node name="Ground" type="StaticBody2D" parent="Surfaces"]
+[node name="Ground" type="StaticBody2D" parent="PausableNode/Surfaces"]
 position = Vector2(568, 608)
 scale = Vector2(2.069523, 3.2227168)
 
-[node name="PolygonGround" type="Polygon2D" parent="Surfaces/Ground"]
+[node name="PolygonGround" type="Polygon2D" parent="PausableNode/Surfaces/Ground"]
 position = Vector2(8, 0)
 color = Color(0.5882353, 0, 0, 1)
 polygon = PackedVector2Array(-576, 0, 576, 0, 576, 80, -576, 80)
 
-[node name="CollisionShape" type="CollisionShape2D" parent="Surfaces/Ground"]
+[node name="CollisionShape" type="CollisionShape2D" parent="PausableNode/Surfaces/Ground"]
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_aeuny")
 debug_color = Color(4.813075e-07, 0.6235668, 0.5393091, 0.41960785)
 
-[node name="Area2D" type="Area2D" parent="Surfaces/Ground"]
+[node name="Area2D" type="Area2D" parent="PausableNode/Surfaces/Ground"]
 position = Vector2(0, -16)
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2" type="CollisionShape2D" parent="Surfaces/Ground/Area2D"]
+[node name="CollisionShape2" type="CollisionShape2D" parent="PausableNode/Surfaces/Ground/Area2D"]
 position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_7umm5")
 
-[node name="Edges" type="Node2D" parent="Surfaces"]
+[node name="Edges" type="Node2D" parent="PausableNode/Surfaces"]
 position = Vector2(576, 0)
 
-[node name="edges" type="StaticBody2D" parent="Surfaces/Edges"]
+[node name="edges" type="StaticBody2D" parent="PausableNode/Surfaces/Edges"]
 position = Vector2(-592, 128)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Surfaces/Edges/edges"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PausableNode/Surfaces/Edges/edges"]
 scale = Vector2(1.0055482, 1)
 polygon = PackedVector2Array(16, -128, 16, 568, 1168, 568, 1168, -128, 1168, -192, 1232, -192, 1232, 648, -48, 648, -48, -192, 16, -192)
 
-[node name="Player" parent="." instance=ExtResource("1_g8rii")]
+[node name="Player" parent="PausableNode" instance=ExtResource("1_g8rii")]
 z_index = 10
 position = Vector2(576, 136)
 
-[node name="Camera2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_ub47v")]
+[node name="Camera2D" parent="PausableNode" node_paths=PackedStringArray("target") instance=ExtResource("2_ub47v")]
 position = Vector2(576, 320)
 position_smoothing_enabled = true
 target = NodePath("../Player")
 
-[node name="MarginContainer" type="MarginContainer" parent="Camera2D"]
+[node name="MarginContainer" type="MarginContainer" parent="PausableNode/Camera2D"]
 custom_minimum_size = Vector2(0, 100)
 anchors_preset = 8
 anchor_left = 0.5
@@ -106,12 +111,26 @@ offset_bottom = -226.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PausableNode/Camera2D/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 75
 bbcode_enabled = true
 text = "[rainbow freq=1.0 sat=0.8 val=0.8pulse freq=1.5][shake rate=20.0 level=5 connected=1] STACKING BOXES"
 vertical_alignment = 3
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="PausableNode"]
+position = Vector2(576, -240)
+amount = 50
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 100)
+initial_velocity_max = 1.0
+scale_amount_min = 0.0
+scale_amount_max = 31.93
+scale_amount_curve = SubResource("Curve_aeuny")
+color_ramp = SubResource("Gradient_7umm5")
+color_initial_ramp = SubResource("Gradient_8tcek")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -143,20 +162,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 1)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(576, -240)
-amount = 50
-lifetime = 5.0
-emission_shape = 3
-emission_rect_extents = Vector2(1000, 1)
-gravity = Vector2(0, 100)
-initial_velocity_max = 1.0
-scale_amount_min = 0.0
-scale_amount_max = 31.93
-scale_amount_curve = SubResource("Curve_aeuny")
-color_ramp = SubResource("Gradient_7umm5")
-color_initial_ramp = SubResource("Gradient_8tcek")
+[node name="PauseGameMenu" parent="CanvasLayer" instance=ExtResource("4_7umm5")]
+visible = false
 
-[connection signal="reload_scene" from="." to="Player" method="_on_level_reload_scene"]
-[connection signal="body_entered" from="Surfaces/Ground/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="camera_limit" from="Camera2D" to="." method="_on_camera_2d_camera_limit"]
+[connection signal="reload_scene" from="." to="PausableNode/Player" method="_on_level_reload_scene"]
+[connection signal="body_entered" from="PausableNode/Surfaces/Ground/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="camera_limit" from="PausableNode/Camera2D" to="." method="_on_camera_2d_camera_limit"]

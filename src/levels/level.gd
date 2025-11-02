@@ -2,9 +2,10 @@ extends Node2D
 
 signal reload_scene
 
+@onready var camera_2d: Camera2D = $PausableNode/Camera2D
 @onready var hitmarker: ColorRect = $CanvasLayer/Hitmarker
-@onready var camera_2d: Camera2D = $Camera2D
 @onready var score_label: Label = $CanvasLayer/ScoreLabel
+@onready var pause_game_menu: Control = $CanvasLayer/PauseGameMenu
 
 var scene_reloading: bool = false
 
@@ -15,6 +16,12 @@ func _ready() -> void:
 		GameData.high_score = save.high_score
 	
 	score_label.text = "Score: %d\nHigh Score: %d" % [GameData.score, GameData.high_score]
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = !get_tree().paused
+		pause_game_menu.visible = true
+
 
 # reload the scene after a box has been dropped on the ground
 func _on_area_2d_body_entered(_body: Node2D) -> void:
