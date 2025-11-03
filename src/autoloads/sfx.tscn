@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cksh4rthy1agb"]
+
+[ext_resource type="AudioStream" uid="uid://cfsb0ihcpwpkm" path="res://assets/audio/sfx/minimal-ui-pop-383735.mp3" id="1_fj60m"]
+[ext_resource type="Script" uid="uid://ehxc7smaohht" path="res://src/autoloads/sfx.gd" id="1_undx3"]
+[ext_resource type="AudioStream" uid="uid://cat2th8rfep6q" path="res://assets/audio/sfx/beep-6-96243.mp3" id="2_undx3"]
+[ext_resource type="AudioStream" uid="uid://btbmbmo7j87ft" path="res://assets/audio/sfx/thud-sound-effect-405470.mp3" id="4_snoob"]
+[ext_resource type="AudioStream" uid="uid://xsj1egd7e82g" path="res://assets/audio/sfx/simple-pop-noise-383737.mp3" id="5_10h44"]
+[ext_resource type="AudioStream" uid="uid://clbggd1cgdjky" path="res://assets/audio/sfx/constant-mechanical-noise-63164.mp3" id="6_tv3yh"]
+
+[node name="SFX" type="Node2D"]
+script = ExtResource("1_undx3")
+
+[node name="ButtonPress" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_fj60m")
+bus = &"SFX"
+
+[node name="StartGameButtonPress" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_undx3")
+bus = &"SFX"
+
+[node name="Thud" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_snoob")
+bus = &"SFX"
+
+[node name="UIsettingspop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_fj60m")
+bus = &"SFX"
+
+[node name="DropBoxSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_10h44")
+
+[node name="PlayerMovingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tv3yh")

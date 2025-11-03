@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi8cu242uym18"]
+
+[ext_resource type="AudioStream" uid="uid://cblydrcg27vao" path="res://assets/audio/music/Stacking Boxes Soundtraxck.wav" id="1_k3q4i"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_k3q4i")
+autoplay = true
+bus = &"Music"

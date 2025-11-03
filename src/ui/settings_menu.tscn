@@ -119,7 +119,7 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Music"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_mu2an")
 
@@ -127,7 +127,7 @@ theme = ExtResource("2_mu2an")
 layout_mode = 2
 text = "SFX"
 
-[node name="HSlider2" type="HSlider" parent="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer"]
+[node name="SFXslider" type="HSlider" parent="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_mu2an")
 
@@ -146,17 +146,26 @@ theme = ExtResource("2_mu2an")
 text = "VIDEO"
 horizontal_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
+[node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
 layout_mode = 2
+item_count = 4
+popup/item_0/text = "1280x720"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1920x1080"
+popup/item_2/id = 2
+popup/item_3/text = "2560x1440"
+popup/item_3/id = 3
 
-[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton"]
+[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/ResolutionOptionButton"]
 script = ExtResource("3_o7e4l")
 hover_scale = Vector2(1.2, 1.2)
 time = 0.2
 transition_type = 10
 metadata/_custom_type_script = "uid://ikwn3mhw0jte"
 
-[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton"]
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/ResolutionOptionButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -167,17 +176,22 @@ theme_override_font_sizes/font_size = 18
 text = "Resolution"
 horizontal_alignment = 1
 
-[node name="OptionButton2" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
+[node name="V-syncOptionButton" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
 layout_mode = 2
+item_count = 2
+popup/item_0/text = "DISABLED"
+popup/item_0/id = 0
+popup/item_1/text = "ENABLED"
+popup/item_1/id = 1
 
-[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton2"]
+[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/V-syncOptionButton"]
 script = ExtResource("3_o7e4l")
 hover_scale = Vector2(1.2, 1.2)
 time = 0.2
 transition_type = 10
 metadata/_custom_type_script = "uid://ikwn3mhw0jte"
 
-[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton2"]
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/V-syncOptionButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,17 +202,24 @@ theme_override_font_sizes/font_size = 18
 text = "V-sync"
 horizontal_alignment = 1
 
-[node name="OptionButton3" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
+[node name="WindowOptionButton" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
 layout_mode = 2
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Borderless"
+popup/item_1/id = 1
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 2
 
-[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton3"]
+[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/WindowOptionButton"]
 script = ExtResource("3_o7e4l")
 hover_scale = Vector2(1.2, 1.2)
 time = 0.2
 transition_type = 10
 metadata/_custom_type_script = "uid://ikwn3mhw0jte"
 
-[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton3"]
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/WindowOptionButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -224,16 +245,38 @@ theme = ExtResource("2_mu2an")
 text = "KEY REBINDING"
 horizontal_alignment = 1
 
-[node name="MainMenuButton" type="Button" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer"]
+[node name="KeyRebindButton" type="Button" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_mu2an")
 theme_type_variation = &"FlatButton"
 text = "Rebind keys
 "
 
-[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer/MainMenuButton"]
+[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer/KeyRebindButton"]
 script = ExtResource("3_o7e4l")
 hover_scale = Vector2(1.2, 1.2)
 time = 0.2
 transition_type = 10
 metadata/_custom_type_script = "uid://ikwn3mhw0jte"
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 736.0
+offset_right = 128.0
+offset_bottom = 759.0
+theme = ExtResource("2_mu2an")
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+
+[node name="AnimationComponent3" type="Node" parent="MainMenuButton"]
+script = ExtResource("3_o7e4l")
+hover_scale = Vector2(1.2, 1.2)
+time = 0.2
+transition_type = 10
+metadata/_custom_type_script = "uid://ikwn3mhw0jte"
+
+[connection signal="item_selected" from="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
+[connection signal="item_selected" from="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/V-syncOptionButton" to="." method="_on_vsync_option_button_item_selected"]
+[connection signal="item_selected" from="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/WindowOptionButton" to="." method="_on_window_option_button_item_selected"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]

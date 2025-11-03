@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 SceneSwitcher="*res://src/autoloads/scene_switcher.gd"
 GameData="*res://src/autoloads/game_data.gd"
 MainV2="*res://src/main/mainV2.gd"
+Music="*res://src/autoloads/music.tscn"
+Sfx="*res://src/autoloads/sfx.tscn"
 
 [display]
 

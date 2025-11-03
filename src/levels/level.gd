@@ -25,6 +25,8 @@ func _process(_delta: float) -> void:
 
 # reload the scene after a box has been dropped on the ground
 func _on_area_2d_body_entered(_body: Node2D) -> void:
+	#play sfx
+	Sfx.on_game_over()
 	# Shake camera, flash the screen red
 	camera_2d.shake(0.4) # Start 0.4 seconden schudden
 	hitmarker.visible = true
@@ -33,7 +35,7 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	
 	
 	if not scene_reloading:
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(4.0).timeout
 		restart_scene()
 
 func restart_scene() -> void:
