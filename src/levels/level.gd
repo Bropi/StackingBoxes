@@ -18,7 +18,7 @@ func _ready() -> void:
 	score_label.text = "Score: %d\nHigh Score: %d" % [GameData.score, GameData.high_score]
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") && pause_game_menu.visible == false:
 		get_tree().paused = !get_tree().paused
 		pause_game_menu.visible = true
 

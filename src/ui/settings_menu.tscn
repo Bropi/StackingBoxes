@@ -1,0 +1,239 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxv7ri44vxd5u"]
+
+[ext_resource type="Script" uid="uid://cmscy4lnn3hfy" path="res://src/ui/settings_menu.gd" id="1_c54ve"]
+[ext_resource type="Theme" uid="uid://cyxxc324mb2a8" path="res://src/ui/my_theme.tres" id="2_mu2an"]
+[ext_resource type="Script" uid="uid://ikwn3mhw0jte" path="res://src/ui/animation_component.gd" id="3_o7e4l"]
+
+[sub_resource type="Curve" id="Curve_wa03a"]
+_data = [Vector2(0.034883723, 0.056179762), 0.0, 0.0, 0, 0, Vector2(0.1918605, 0.9662922), 0.0, 0.0, 0, 0, Vector2(0.37790704, 0.15730345), 0.0, 0.0, 0, 0, Vector2(0.5348838, 0.9662922), 0.0, 0.0, 0, 0, Vector2(0.72674423, 0.1685394), 0.0, 0.0, 0, 0, Vector2(0.94767445, 0.9887641), 2.244292, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Gradient" id="Gradient_c54ve"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.11643836, 0.19863014, 0.33561644, 0.47260273, 0.6164383, 0.7123288, 0.79452056, 0.8630137, 1)
+colors = PackedColorArray(1, 1, 0.92941177, 1, 0.99607843, 0, 0, 1, 0.74509805, 0, 0.6901961, 1, 1, 0.48235294, 0, 1, 0, 0.9607843, 0, 1, 0, 0.5411765, 0.5137255, 1, 0.70547944, 0.70547944, 0.70547944, 1, 0.9237525, 0.8141474, 0, 1, 0.85975206, 0.85975206, 0.85975206, 1, 0, 0, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_vipsl"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c54ve")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ColorRect"]
+position = Vector2(950, 0)
+amount = 150
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(0, 100)
+initial_velocity_max = 1.0
+scale_amount_min = 0.0
+scale_amount_max = 31.93
+scale_amount_curve = SubResource("Curve_wa03a")
+color_ramp = SubResource("Gradient_c54ve")
+color_initial_ramp = SubResource("Gradient_vipsl")
+
+[node name="CPUParticlesMiddle" type="CPUParticles2D" parent="."]
+position = Vector2(950, 1076)
+amount = 150
+lifetime = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(300, 1)
+gravity = Vector2(0, -100)
+initial_velocity_max = 1.0
+scale_amount_min = 0.0
+scale_amount_max = 31.93
+scale_amount_curve = SubResource("Curve_wa03a")
+color_ramp = SubResource("Gradient_c54ve")
+color_initial_ramp = SubResource("Gradient_vipsl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -299.0
+offset_right = 204.0
+offset_bottom = -149.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 75
+bbcode_enabled = true
+text = "[rainbow freq=1.0 sat=0.8 val=0.8pulse freq=2.5][shake rate=20.0 level=5 connected=1] SETTINGS"
+vertical_alignment = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="AUDIO" type="PanelContainer" parent="MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_mu2an")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/HBoxContainer/AUDIO"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu2an")
+text = "AUDIO"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu2an")
+
+[node name="Label3" type="Label" parent="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="HSlider2" type="HSlider" parent="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu2an")
+
+[node name="RESOLUTION" type="PanelContainer" parent="MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_mu2an")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/HBoxContainer/RESOLUTION"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu2an")
+text = "VIDEO"
+horizontal_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
+layout_mode = 2
+
+[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton"]
+script = ExtResource("3_o7e4l")
+hover_scale = Vector2(1.2, 1.2)
+time = 0.2
+transition_type = 10
+metadata/_custom_type_script = "uid://ikwn3mhw0jte"
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "Resolution"
+horizontal_alignment = 1
+
+[node name="OptionButton2" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
+layout_mode = 2
+
+[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton2"]
+script = ExtResource("3_o7e4l")
+hover_scale = Vector2(1.2, 1.2)
+time = 0.2
+transition_type = 10
+metadata/_custom_type_script = "uid://ikwn3mhw0jte"
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "V-sync"
+horizontal_alignment = 1
+
+[node name="OptionButton3" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
+layout_mode = 2
+
+[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton3"]
+script = ExtResource("3_o7e4l")
+hover_scale = Vector2(1.2, 1.2)
+time = 0.2
+transition_type = 10
+metadata/_custom_type_script = "uid://ikwn3mhw0jte"
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/OptionButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "Window options"
+horizontal_alignment = 1
+
+[node name="KEYREBIND" type="PanelContainer" parent="MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_mu2an")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/HBoxContainer/KEYREBIND"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu2an")
+text = "KEY REBINDING"
+horizontal_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu2an")
+theme_type_variation = &"FlatButton"
+text = "Rebind keys
+"
+
+[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer/MainMenuButton"]
+script = ExtResource("3_o7e4l")
+hover_scale = Vector2(1.2, 1.2)
+time = 0.2
+transition_type = 10
+metadata/_custom_type_script = "uid://ikwn3mhw0jte"

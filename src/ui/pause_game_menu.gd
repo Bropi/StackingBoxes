@@ -14,7 +14,7 @@ func _on_main_menu_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
+	SceneSwitcher.switch_to_scene("res://src/ui/settings_menu.tscn")
 
 
 func _on_quit_game_button_pressed() -> void:
