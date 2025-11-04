@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxv7ri44vxd5u"]
 
-[ext_resource type="Script" uid="uid://cmscy4lnn3hfy" path="res://src/ui/settings_menu.gd" id="1_c54ve"]
+[ext_resource type="Script" uid="uid://dkdjjnx7bmcwg" path="res://src/ui/settings_menuV2.gd" id="1_mu2an"]
 [ext_resource type="Theme" uid="uid://cyxxc324mb2a8" path="res://src/ui/my_theme.tres" id="2_mu2an"]
 [ext_resource type="Script" uid="uid://ikwn3mhw0jte" path="res://src/ui/animation_component.gd" id="3_o7e4l"]
 
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c54ve")
+script = ExtResource("1_mu2an")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -48,7 +48,7 @@ scale_amount_curve = SubResource("Curve_wa03a")
 color_ramp = SubResource("Gradient_c54ve")
 color_initial_ramp = SubResource("Gradient_vipsl")
 
-[node name="CPUParticlesMiddle" type="CPUParticles2D" parent="."]
+[node name="CPUParticlesMiddle" type="CPUParticles2D" parent="ColorRect"]
 position = Vector2(950, 1076)
 amount = 150
 lifetime = 5.0
@@ -276,6 +276,8 @@ time = 0.2
 transition_type = 10
 metadata/_custom_type_script = "uid://ikwn3mhw0jte"
 
+[connection signal="value_changed" from="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer/SFXslider" to="." method="_on_sf_xslider_value_changed"]
 [connection signal="item_selected" from="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
 [connection signal="item_selected" from="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/V-syncOptionButton" to="." method="_on_vsync_option_button_item_selected"]
 [connection signal="item_selected" from="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/WindowOptionButton" to="." method="_on_window_option_button_item_selected"]

@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://clbggd1cgdjky" path="res://assets/audio/sfx/constant-mechanical-noise-63164.mp3" id="6_tv3yh"]
 
 [node name="SFX" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_undx3")
 
 [node name="ButtonPress" type="AudioStreamPlayer2D" parent="."]
@@ -28,6 +29,7 @@ bus = &"SFX"
 
 [node name="DropBoxSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_10h44")
+volume_db = 24.0
 
 [node name="PlayerMovingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_tv3yh")

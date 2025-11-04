@@ -114,20 +114,6 @@ time = 0.2
 transition_type = 10
 metadata/_custom_type_script = "uid://ikwn3mhw0jte"
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_6mohf")
-theme_type_variation = &"FlatButton"
-text = "Settings
-"
-
-[node name="AnimationComponent2" type="Node" parent="CenterContainer/PanelContainer/VBoxContainer/SettingsButton"]
-script = ExtResource("3_8fcdj")
-hover_scale = Vector2(1.2, 1.2)
-time = 0.2
-transition_type = 10
-metadata/_custom_type_script = "uid://ikwn3mhw0jte"
-
 [node name="QuitGameButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_6mohf")
@@ -165,5 +151,4 @@ vertical_alignment = 3
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/ResumeGameButton" to="." method="_on_resume_game_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

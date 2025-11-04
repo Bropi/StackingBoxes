@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ufp4l1t8n5cv"]
+[gd_scene load_steps=11 format=3 uid="uid://ufp4l1t8n5cv"]
 
 [ext_resource type="Script" uid="uid://vav5fwxefp8d" path="res://src/levels/level.gd" id="1_aeuny"]
 [ext_resource type="PackedScene" uid="uid://dx03d1pbdsrvk" path="res://src/characters/player/player.tscn" id="1_g8rii"]
+[ext_resource type="Texture2D" uid="uid://cqtl62sv2tjma" path="res://assets/Environment/tilesets/Background.png" id="2_8tcek"]
 [ext_resource type="PackedScene" uid="uid://bfssx2jgauwvm" path="res://src/levels/camera.tscn" id="2_ub47v"]
 [ext_resource type="PackedScene" uid="uid://de8oc7teccqdt" path="res://src/ui/pause_game_menu.tscn" id="4_7umm5"]
 
@@ -37,6 +38,14 @@ offset_right = -647.99994
 offset_bottom = -288.0
 scale = Vector2(63.192528, 31.197004)
 color = Color(0.15906177, 0.16371444, 0.16836713, 1)
+
+[node name="TextureRect" type="TextureRect" parent="PausableNode"]
+offset_left = -884.0
+offset_top = -817.0
+offset_right = 1036.0
+offset_bottom = 263.0
+scale = Vector2(1.3419929, 1.3419929)
+texture = ExtResource("2_8tcek")
 
 [node name="Surfaces" type="Node2D" parent="PausableNode"]
 

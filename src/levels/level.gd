@@ -35,7 +35,7 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	
 	
 	if not scene_reloading:
-		await get_tree().create_timer(4.0).timeout
+		await get_tree().create_timer(3.0).timeout
 		restart_scene()
 
 func restart_scene() -> void:

@@ -5,4 +5,4 @@
 [node name="BoxV2" type="Node2D" groups=["Box Instances"]]
 script = ExtResource("1_s16db")
 
-[node name="BoxInstance" type="Node2D" parent="."]
+[node name="BoxInstance" type="RigidBody2D" parent="."]
