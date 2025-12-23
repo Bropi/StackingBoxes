@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxv7ri44vxd5u"]
+[gd_scene load_steps=8 format=3 uid="uid://dxv7ri44vxd5u"]
 
 [ext_resource type="Script" uid="uid://dkdjjnx7bmcwg" path="res://src/ui/settings_menuV2.gd" id="1_mu2an"]
 [ext_resource type="Theme" uid="uid://cyxxc324mb2a8" path="res://src/ui/my_theme.tres" id="2_mu2an"]
 [ext_resource type="Script" uid="uid://ikwn3mhw0jte" path="res://src/ui/animation_component.gd" id="3_o7e4l"]
+[ext_resource type="Script" uid="uid://pmhy3wub5h37" path="res://src/ui/key_rebind_button.gd" id="4_o7e4l"]
 
 [sub_resource type="Curve" id="Curve_wa03a"]
 _data = [Vector2(0.034883723, 0.056179762), 0.0, 0.0, 0, 0, Vector2(0.1918605, 0.9662922), 0.0, 0.0, 0, 0, Vector2(0.37790704, 0.15730345), 0.0, 0.0, 0, 0, Vector2(0.5348838, 0.9662922), 0.0, 0.0, 0, 0, Vector2(0.72674423, 0.1685394), 0.0, 0.0, 0, 0, Vector2(0.94767445, 0.9887641), 2.244292, 0.0, 0, 0]
@@ -71,9 +72,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -196.0
-offset_top = -299.0
+offset_top = -492.0
 offset_right = 204.0
-offset_bottom = -149.0
+offset_bottom = -342.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -146,8 +147,23 @@ theme = ExtResource("2_mu2an")
 text = "VIDEO"
 horizontal_alignment = 1
 
-[node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
+[node name="ResolutionOptionButton2" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
 layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/ResolutionOptionButton2"]
+layout_mode = 0
+offset_top = -6.0
+offset_right = 471.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 18
+text = "Resolution"
+horizontal_alignment = 1
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
+visible = false
+layout_mode = 2
+selected = 2
+allow_reselect = true
 item_count = 4
 popup/item_0/text = "1280x720"
 popup/item_0/id = 0
@@ -178,18 +194,6 @@ horizontal_alignment = 1
 
 [node name="V-syncOptionButton" type="OptionButton" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer"]
 layout_mode = 2
-item_count = 2
-popup/item_0/text = "DISABLED"
-popup/item_0/id = 0
-popup/item_1/text = "ENABLED"
-popup/item_1/id = 1
-
-[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/V-syncOptionButton"]
-script = ExtResource("3_o7e4l")
-hover_scale = Vector2(1.2, 1.2)
-time = 0.2
-transition_type = 10
-metadata/_custom_type_script = "uid://ikwn3mhw0jte"
 
 [node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/V-syncOptionButton"]
 layout_mode = 1
@@ -211,13 +215,6 @@ popup/item_1/text = "Borderless"
 popup/item_1/id = 1
 popup/item_2/text = "Fullscreen"
 popup/item_2/id = 2
-
-[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/WindowOptionButton"]
-script = ExtResource("3_o7e4l")
-hover_scale = Vector2(1.2, 1.2)
-time = 0.2
-transition_type = 10
-metadata/_custom_type_script = "uid://ikwn3mhw0jte"
 
 [node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/WindowOptionButton"]
 layout_mode = 1
@@ -245,14 +242,59 @@ theme = ExtResource("2_mu2an")
 text = "KEY REBINDING"
 horizontal_alignment = 1
 
+[node name="Label2" type="Label" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer"]
+layout_mode = 2
+text = "Move Left"
+
 [node name="KeyRebindButton" type="Button" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_mu2an")
 theme_type_variation = &"FlatButton"
 text = "Rebind keys
 "
+script = ExtResource("4_o7e4l")
 
-[node name="AnimationComponent2" type="Node" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer/KeyRebindButton"]
+[node name="AnimationComponent3" type="Node" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer/KeyRebindButton"]
+script = ExtResource("3_o7e4l")
+hover_scale = Vector2(1.2, 1.2)
+time = 0.2
+transition_type = 10
+metadata/_custom_type_script = "uid://ikwn3mhw0jte"
+
+[node name="Label3" type="Label" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer"]
+layout_mode = 2
+text = "Move Right"
+
+[node name="KeyRebindButton2" type="Button" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu2an")
+theme_type_variation = &"FlatButton"
+text = "Rebind keys
+"
+script = ExtResource("4_o7e4l")
+action_to_remap = "move_right"
+
+[node name="AnimationComponent3" type="Node" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer/KeyRebindButton2"]
+script = ExtResource("3_o7e4l")
+hover_scale = Vector2(1.2, 1.2)
+time = 0.2
+transition_type = 10
+metadata/_custom_type_script = "uid://ikwn3mhw0jte"
+
+[node name="Label4" type="Label" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer"]
+layout_mode = 2
+text = "Drop Box"
+
+[node name="KeyRebindButton3" type="Button" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu2an")
+theme_type_variation = &"FlatButton"
+text = "Rebind keys
+"
+script = ExtResource("4_o7e4l")
+action_to_remap = "drop_box"
+
+[node name="AnimationComponent3" type="Node" parent="MarginContainer2/HBoxContainer/KEYREBIND/VBoxContainer/KeyRebindButton3"]
 script = ExtResource("3_o7e4l")
 hover_scale = Vector2(1.2, 1.2)
 time = 0.2
@@ -262,9 +304,9 @@ metadata/_custom_type_script = "uid://ikwn3mhw0jte"
 [node name="MainMenuButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 40.0
-offset_top = 736.0
-offset_right = 128.0
-offset_bottom = 759.0
+offset_top = 1000.0
+offset_right = 204.0
+offset_bottom = 1042.0
 theme = ExtResource("2_mu2an")
 theme_override_font_sizes/font_size = 30
 text = "Main Menu"
@@ -278,6 +320,7 @@ metadata/_custom_type_script = "uid://ikwn3mhw0jte"
 
 [connection signal="value_changed" from="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer2/HBoxContainer/AUDIO/VBoxContainer/SFXslider" to="." method="_on_sf_xslider_value_changed"]
+[connection signal="item_selected" from="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/ResolutionOptionButton2" to="." method="_on_resolution_option_button_2_item_selected"]
 [connection signal="item_selected" from="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
 [connection signal="item_selected" from="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/V-syncOptionButton" to="." method="_on_vsync_option_button_item_selected"]
 [connection signal="item_selected" from="MarginContainer2/HBoxContainer/RESOLUTION/VBoxContainer/WindowOptionButton" to="." method="_on_window_option_button_item_selected"]

@@ -40,6 +40,7 @@ scale = Vector2(63.192528, 31.197004)
 color = Color(0.15906177, 0.16371444, 0.16836713, 1)
 
 [node name="TextureRect" type="TextureRect" parent="PausableNode"]
+visible = false
 offset_left = -884.0
 offset_top = -817.0
 offset_right = 1036.0
